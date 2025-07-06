@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -21,6 +29,16 @@
     justify-content: space-evenly;
 }
 
+.nav a {
+    color: white;
+    text-decoration: none;
+
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
 h1 {
     margin: 40px auto;
     text-align: center;
@@ -29,25 +47,43 @@ h1 {
 .home-text {
     display: flex;
     flex-direction: column;
-}
-
-.emergency {
-    padding: 108px;
-    background: red;
-    border-radius: 75%;
-    border: none;
-    font-size: large;
-    font-weight: bolder;
-    position: relative;
-    left: 508px;
-    top: 15px;
-
+    align-items: center;
 }
 
 .logo {
-    width: 95px;
+    width: auto;
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    gap: 10px;
+    /* Better spacing */
     margin-left: 10px;
+    font-size: 1.5rem;
+
+}
+
+
+
+.emergency {
+    padding: 60px;
+    background: red;
+    border-radius: 50%;
+    border: none;
+    font-size: large;
+    font-weight: bolder;
+    margin-top: 20px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+
+.emergency:hover {
+    transform: scale(1.05);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
