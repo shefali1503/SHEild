@@ -87,3 +87,18 @@ h1 {
     justify-content: center;
     margin-top: 20px;
 }
+
+
+
+/* For Emergency contacts */
+#emergency-contacts{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#emergency-contacts h2{
+    font-size: 42px;
+    font-weight: bold;
+}
