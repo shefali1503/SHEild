@@ -162,6 +162,10 @@ h1 {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.hidden {
+    display: none;
+}
+
 .formActions {
     display: flex;
     justify-content: flex-end;

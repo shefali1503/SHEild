@@ -11,6 +11,7 @@ document.querySelector(".emergency").addEventListener("click", SendMessage)
 // for the emergency contact input
 function addEmergencyContact() {
     let formContainer = document.querySelector(".inputContact");
+    formContainer.classList.remove("hidden");  // Show container
     if (!formContainer.querySelector("input")) {//checks if the inputContact has any input field yet or not
         formContainer.innerHTML = ` <input type="text" class="nameInput"    placeholder="Enter contact name" required> 
             <input type="tel" class="numberInput" placeholder="Enter the contact number" pattern="[0-9]+" required>
@@ -28,7 +29,7 @@ function addEmergencyContact() {
         });
 
         //submitbutton click
-        document.querySelector(".submitBtn").addEventListener("click", function (){
+        document.querySelector(".submitBtn").addEventListener("click", function () {
             const name = document.querySelector(".nameInput").value.trim();
             const number = document.querySelector(".numberInput").value.trim();
             const email = document.querySelector(".emailInput").value.trim();
@@ -52,6 +53,20 @@ function addEmergencyContact() {
                 alert("Please enter a valid email address.");
                 return;
             }
+            // If valid, create the contact card
+            const contactCard = document.createElement("div");
+            contactCard.classList.add("contact");
+            contactCard.innerHTML = `
+        <p>${name}</p>
+        <p>${number}</p>
+        <p>${email}</p>
+        <button class="call">📞 Call</button>
+    `;
+
+            document.querySelector(".contact-container").appendChild(contactCard);
+            document.querySelector(".inputContact").innerHTML = ''; // clear form
+            formContainer.classList.add("hidden");  // hide container once submitted
+
 
         });
     }
