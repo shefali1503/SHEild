@@ -8,7 +8,7 @@ function SendMessage() {
 document.querySelector(".emergency").addEventListener("click", SendMessage)
 
 
-// for the emergency contact input
+// for the emergency contact input and adding the card of input into the card-container
 function addEmergencyContact() {
     let formContainer = document.querySelector(".inputContact");
     formContainer.classList.remove("hidden");  // Show container
@@ -17,11 +17,15 @@ function addEmergencyContact() {
             <input type="tel" class="numberInput" placeholder="Enter the contact number" pattern="[0-9]+" required>
             <input type="email" class="emailInput" placeholder="Enter the contact email" required>
             <div class="formActions">
+                <p class="close">Close form<p>
                 <button class="clearBtn" type="button">Clear</button>
                 <button class="submitBtn" type="submit">Input</button>
             </div>
             `;
-
+        //clear form para
+        document.querySelector(".close").addEventListener("click",function(){
+            formContainer.classList.add("hidden");  // closes form
+        })
         //clear button to clear the form
         document.querySelector(".clearBtn").addEventListener("click", function () {
             //as the queryselectorAll will return the array
@@ -57,17 +61,14 @@ function addEmergencyContact() {
             const contactCard = document.createElement("div");
             contactCard.classList.add("contact");
             contactCard.innerHTML = `
-        <p>${name}</p>
-        <p>${number}</p>
-        <p>${email}</p>
-        <button class="call">📞 Call</button>
-    `;
-
-            document.querySelector(".contact-container").appendChild(contactCard);
+                    <p>${name}</p>
+                    <p>${number}</p>
+                    <p>${email}</p>
+                    <button class="call">📞 Call</button>
+                `;
+             document.querySelector(".contact-container").appendChild(contactCard);
             document.querySelector(".inputContact").innerHTML = ''; // clear form
             formContainer.classList.add("hidden");  // hide container once submitted
-
-
         });
     }
 }

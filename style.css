@@ -8,6 +8,7 @@ body {
 
 .header {
     display: flex;
+    background-color: black;
     justify-content: space-between;
     background-color: black;
     color: white;
@@ -39,15 +40,11 @@ body {
     text-decoration: underline;
 }
 
-h1 {
-    margin: 40px auto;
-    text-align: center;
-}
-
 .home-text {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 40px auto;
 }
 
 .logo {
@@ -60,8 +57,6 @@ h1 {
     font-size: 1.5rem;
 
 }
-
-
 
 .emergency {
     padding: 60px;
@@ -169,8 +164,15 @@ h1 {
 .formActions {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     gap: 10px;
     margin-top: 10px;
+}
+
+.formActions .close {
+    color: grey;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .clearBtn,
@@ -184,3 +186,5 @@ h1 {
     cursor: pointer;
 
 }
+
+/* styling the contact card added in the card container */
