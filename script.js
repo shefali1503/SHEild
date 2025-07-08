@@ -1,17 +1,64 @@
+//to load all the saved contacts on page load or even reload
+document.addEventListener("DOMContentLoaded", () => {
+    loadContactsFromLocalStorage();
+    checkMaxContacts(); // Optional: disables Add button if limit is reached
+});
+
+
+// Load contacts from localStorage
+function loadContactsFromLocalStorage() {
+    const contacts = JSON.parse(localStorage.getItem("emergencyContacts")) || [];
+    contacts.forEach(contact => renderContactCard(contact));
+}
+
 // for the emergency email 
 
 function SendMessage() {
-    alert("Emergency message sent")
+    alert("🚨 Emergency message sent")
     //emergency button pressed notification will be sent to the contacts
 }
-
 document.querySelector(".emergency").addEventListener("click", SendMessage)
 
 
 // for the emergency contact input and adding the card of input into the card-container
+function renderContactCard(contact) {
+    const contactCard = document.createElement("div");
+    contactCard.classList.add("contact");
+    contactCard.innerHTML = `
+        <img src="${contact.imgSrc}" alt="contact" >
+        <div class="info">
+            <p>${contact.name}</p>
+            <p>${contact.email} | ${contact.number}</p>
+        </div>
+        <button class="call">📞</button>
+        <button class="deleteBtn">❌</button>
+    `;
+    //append to the card container
+    document.querySelector(".contact-container").appendChild(contactCard);
+
+    contactCard.querySelector(".call").addEventListener("click", () => {
+        callConnect(contact.name); // optional name use
+    });
+
+    // Attach delete event
+    contactCard.querySelector(".deleteBtn").addEventListener("click", () => {
+        deleteContact(contact.email); // using email as unique ID
+        contactCard.remove();
+        checkMaxContacts(); // re-enable add if needed
+    });
+
+}
+
+function callConnect(name) {
+    alert(`📞 Calling ${name}...`);
+}
+
+
 function addEmergencyContact() {
     let formContainer = document.querySelector(".inputContact");
+
     formContainer.classList.remove("hidden");  // Show container
+
     if (!formContainer.querySelector("input")) {//checks if the inputContact has any input field yet or not
         formContainer.innerHTML = ` <input type="text" class="nameInput"    placeholder="Enter contact name" required> 
             <input type="tel" class="numberInput" placeholder="Enter the contact number" pattern="[0-9]+" required>
@@ -22,10 +69,12 @@ function addEmergencyContact() {
                 <button class="submitBtn" type="submit">Input</button>
             </div>
             `;
+
         //clear form para
         document.querySelector(".close").addEventListener("click", function () {
             formContainer.classList.add("hidden");  // closes form
         })
+
         //clear button to clear the form
         document.querySelector(".clearBtn").addEventListener("click", function () {
             //as the queryselectorAll will return the array
@@ -57,23 +106,66 @@ function addEmergencyContact() {
                 alert("Please enter a valid email address.");
                 return;
             }
+
+            // 🚫 Check max contact limit
+            let contacts = JSON.parse(localStorage.getItem("emergencyContacts")) || [];//return array
+
+            //check limit
+            if (contacts.length >= 5) {//check ki array ki length
+                alert("You can only add up to 5 emergency contacts.");
+                return;
+            }
+
+            //check duplicate
+            if (contacts.some(c => (c.email === email || c.number === number))) {
+                alert("This contact already exists.");
+                return;
+            }
+
+            //to save the contact we created an obj
+            const contact = {
+                name,
+                number,
+                email,
+                imgSrc: "./img/profilepic.jpg"
+            }
+
+            contacts.push(contact);//object pushed into the array contacts
+            localStorage.setItem("emergencyContacts", JSON.stringify(contacts));//pass the contacts array in the localstorage
+
             // If valid, create the contact card
-            const contactCard = document.createElement("div");
-            contactCard.classList.add("contact");
-            contactCard.innerHTML = `
-                    <img src="./img/profilepic.jpg" alt="contact" >
-                    <div class="info">
-                        <p>${name}</p>
-                        <p>${email} | 📞${number}</p
-                    </div>
-                    <button class="call">📞 Call</button>
-                `;
-            document.querySelector(".contact-container").appendChild(contactCard);
-            document.querySelector(".inputContact").innerHTML = ''; // clear form
-            formContainer.classList.add("hidden");  // hide container once submitted
+            renderContactCard(contact);
+
+            document.querySelector(".inputContact").innerHTML = '';//once a card is created form will be cleared
+
+            formContainer.classList.add("hidden");//and form will be closed also
+
+            checkMaxContacts();//check if we have reached the max contacts
         });
     }
 }
 document.querySelector(".addButton").addEventListener("click", addEmergencyContact)
+
+// Disable Add button if max contacts reached
+function checkMaxContacts() {
+    const contacts = JSON.parse(localStorage.getItem("emergencyContacts")) || [];//contacts is converted to an array first as in the local storage it is saved as a string
+    const addBtn = document.querySelector(".addButton");//it targets the addButton for inputting the contacts
+
+    if (contacts.length >= 5) {
+        alert("You can enter max 5 emergency contacts.");//alert that shows max contacts  reached now we will disable the button
+        addBtn.disabled = true;//button will not do its work when clicked
+        addBtn.textContent = "Limit Reached (5)";
+    } else {
+        addBtn.disabled = false;
+    }
+}
+
+// Delete contact by email
+function deleteContact(email) {
+    let contacts = JSON.parse(localStorage.getItem("emergencyContacts")) || [];
+    contacts = contacts.filter(c => c.email !== email);
+    localStorage.setItem("emergencyContacts", JSON.stringify(contacts));
+}
+
 
 

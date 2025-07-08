@@ -188,13 +188,21 @@ body {
 }
 
 /* styling the contact card added in the card container */
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
 .contact {
-    border: 2px solid black;
+    width: 350px;
+    border: 2px solid #fff6f6;
     box-shadow: 0 4px 12px #00000014;
     border-radius: 8px;
-    max-width: 300px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 12px;
     padding: 12px;
     background-color: #fff;
@@ -202,7 +210,32 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.contact-container img {
+.contact-container>.contact>img {
     width: 40px;
     height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.contact .info {
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.contact .info p {
+    margin: 4px 0;
+}
+
+.contact .call {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.contact .call:hover {
+    background-color: #0056b3;
 }
