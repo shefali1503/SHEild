@@ -188,3 +188,21 @@ body {
 }
 
 /* styling the contact card added in the card container */
+.contact {
+    border: 2px solid black;
+    box-shadow: 0 4px 12px #00000014;
+    border-radius: 8px;
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background-color: #fff;
+    margin-bottom: 16px;
+    font-family: Arial, sans-serif;
+}
+
+.contact-container img {
+    width: 40px;
+    height: 40px;
+}

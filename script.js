@@ -23,7 +23,7 @@ function addEmergencyContact() {
             </div>
             `;
         //clear form para
-        document.querySelector(".close").addEventListener("click",function(){
+        document.querySelector(".close").addEventListener("click", function () {
             formContainer.classList.add("hidden");  // closes form
         })
         //clear button to clear the form
@@ -61,12 +61,14 @@ function addEmergencyContact() {
             const contactCard = document.createElement("div");
             contactCard.classList.add("contact");
             contactCard.innerHTML = `
-                    <p>${name}</p>
-                    <p>${number}</p>
-                    <p>${email}</p>
+                    <img src="./img/profilepic.jpg" alt="contact" >
+                    <div class="info">
+                        <p>${name}</p>
+                        <p>${email} | 📞${number}</p
+                    </div>
                     <button class="call">📞 Call</button>
                 `;
-             document.querySelector(".contact-container").appendChild(contactCard);
+            document.querySelector(".contact-container").appendChild(contactCard);
             document.querySelector(".inputContact").innerHTML = ''; // clear form
             formContainer.classList.add("hidden");  // hide container once submitted
         });
