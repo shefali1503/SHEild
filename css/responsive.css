@@ -1,1 +1,26 @@
 /* for the nav bar */
+
+@media(max-width: 768px) {
+
+    /* Hide desktop nav */
+    .nav {
+        display: none;
+    }
+
+    .header {
+        justify-content: space-between;
+        padding: 0 10px;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: block;
+        font-size: 28px;
+        background: none;
+        border: none;
+        color: white;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+}

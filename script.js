@@ -167,5 +167,12 @@ function deleteContact(email) {
     localStorage.setItem("emergencyContacts", JSON.stringify(contacts));
 }
 
+//responsive nav bar
+function toggleSidebar(){
+    const sidebar = document.getElementById("sidebar");
+    sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px";
+}
 
+document.querySelector(".hamburger").addEventListener("click",toggleSidebar)
+document.querySelector(".close-btn").addEventListener("click",toggleSidebar)
 
