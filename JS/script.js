@@ -15,38 +15,6 @@ function loadContactsFromLocalStorage() {
 
 function SendMessage() {
     alert("🚨 Emergency message sent")
-    //emergency button pressed notification will be sent to the contacts
-}
-document.querySelector(".emergency").addEventListener("click", SendMessage)
-
-
-// for the emergency contact input and adding the card of input into the card-container
-function renderContactCard(contact) {
-    const contactCard = document.createElement("div");
-    contactCard.classList.add("contact");
-    contactCard.innerHTML = `
-        <img src="${contact.imgSrc}" alt="contact" >
-        <div class="info">
-            <p>${contact.name}</p>
-            <p>${contact.email} | ${contact.number}</p>
-        </div>
-        <button class="call">📞</button>
-        <button class="deleteBtn">❌</button>
-    `;
-    //append to the card container
-    document.querySelector(".contact-container").appendChild(contactCard);
-
-    contactCard.querySelector(".call").addEventListener("click", () => {
-        callConnect(contact.name); // optional name use
-    });
-
-    // Attach delete event
-    contactCard.querySelector(".deleteBtn").addEventListener("click", () => {
-        deleteContact(contact.email); // using email as unique ID
-        contactCard.remove();
-        checkMaxContacts(); // re-enable add if needed
-    });
-
 }
 
 function callConnect(name) {
