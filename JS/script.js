@@ -12,16 +12,49 @@ function loadContactsFromLocalStorage() {
 }
 
 // for the emergency email 
-
-function SendMessage() {
+function EmergencyMessage() {
     alert("🚨 Emergency message sent")
 }
+document.querySelector(".button-container").addEventListener("click", EmergencyMessage);
 
+
+//to show the contact on the website
+function renderContactCard(contact) {
+    const container = document.querySelector(".contact-container"); // or your actual container class
+    const card = document.createElement("div");
+    card.className = "contact";
+    card.innerHTML= `<img src="${contact.imgSrc}" alt="Contact">
+                
+                <div class="info">  
+                    <p>${contact.name}</p>
+                    <p>${contact.number}|${contact.email}</p>
+                </div>
+                <div class="btn"> 
+                <button class="call">📞</button>
+                <button class="delete">❌</button>
+                </div>
+                
+            `;
+    container.appendChild(card);
+     // ✅ These work only for this specific card now
+    const callBtn = card.querySelector(".call");
+    const deleteBtn = card.querySelector(".delete");
+
+    callBtn.addEventListener("click", () => callConnect(contact.name));
+
+    deleteBtn.addEventListener("click", () => {
+        deleteContact(contact.email);
+        card.remove();
+        checkMaxContacts();
+    });
+    
+}
+//call feature
 function callConnect(name) {
     alert(`📞 Calling ${name}...`);
 }
 
-
+//adding emergency contact through form
 function addEmergencyContact() {
     let formContainer = document.querySelector(".inputContact");
 
@@ -136,11 +169,11 @@ function deleteContact(email) {
 }
 
 //responsive nav bar
-function toggleSidebar(){
+function toggleSidebar() {
     const sidebar = document.getElementById("sidebar");
     sidebar.style.width = (sidebar.style.width === "250px") ? "0" : "250px";
 }
 
-document.querySelector(".hamburger").addEventListener("click",toggleSidebar)
-document.querySelector(".close-btn").addEventListener("click",toggleSidebar)
+document.querySelector(".hamburger").addEventListener("click", toggleSidebar)
+document.querySelector(".close-btn").addEventListener("click", toggleSidebar)
 

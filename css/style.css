@@ -17,7 +17,7 @@ body {
     align-items: center;
 }
 
-.hamburger  {
+.hamburger {
     display: none;
 }
 
@@ -234,14 +234,14 @@ body {
 }
 
 .contact {
-    width: 350px;
+    width: 400px;
     border: 2px solid #fff6f6;
     box-shadow: 0 4px 12px #00000014;
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 10px;
     padding: 12px;
     background-color: #fff;
     margin-bottom: 16px;
@@ -276,4 +276,18 @@ body {
 
 .contact .call:hover {
     background-color: #0056b3;
+}
+
+.delete {
+    border: none;
+    background-color: white;
+    font-size: 14px;
+     padding: 6px 10px;
+
+}
+
+.delete:hover {
+    background-color: rgb(177, 168, 168);
+    cursor: pointer;
+
 }
