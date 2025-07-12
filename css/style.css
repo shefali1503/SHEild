@@ -282,7 +282,7 @@ body {
     border: none;
     background-color: white;
     font-size: 14px;
-     padding: 6px 10px;
+    padding: 6px 10px;
 
 }
 
@@ -290,4 +290,23 @@ body {
     background-color: rgb(177, 168, 168);
     cursor: pointer;
 
+}
+
+#location {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+
+}
+
+#location h2 {
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.explain {
+    color: #908b8b;
+    opacity: 0.85;
 }
