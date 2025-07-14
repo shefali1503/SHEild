@@ -1,7 +1,47 @@
-# SHEild
-A women safety web app with emergency contact, live location, and local police assistance.
+# SHEild – Your Digital Shield in Times of Need 🚨
 
-Day 5 
-features added
-a)A home page that has an emergency button to click in the emergency situation .Used HtML and Css (little bit of JS) for making the 
-b)Emergency contacts page to save the 5 max emergency contacts whoem emergency alert will be sent we can even call them
+A work-in-progress emergency support web application developed as a **final project** for the  
+**IBM SkillsBuild: Click, Code, Create – Beginner’s Guide to Front-End Web Development (Summer 2025)**.
+
+---
+
+## 👥 Team: CodeNest  
+**Team Lead:** Shefali Sharma  
+**Status:** ⏳ In Progress (40% complete)  
+**Deadline:** End of July 2025
+
+---
+
+## 🔍 Project Overview
+
+**SHEild** is a responsive web application that enables users to:
+- Store and manage up to 5 emergency contacts
+- Quickly trigger emergency alerts
+- Access helpline numbers (Police, Women Helpline, Ambulance, Mental Health Support)
+- Share live location (feature in progress)
+
+Our goal is to build a safety-first tool accessible on both mobile and desktop devices.
+
+---
+
+## 🚀 Features (as of now)
+
+✅ Emergency contact management (Add, View, Delete)  
+✅ LocalStorage integration for persistent contact data  
+✅ Responsive UI with mobile-friendly navigation  
+✅ Emergency alert button  
+✅ Quick-dial buttons for helpline numbers
+
+🔜 Upcoming:
+- Live location sharing  
+- UI/UX polishing and error handling  
+- Deployment & performance optimization
+
+---
+
+## 🛠️ Tech Stack
+
+- **HTML5**  
+- **CSS3** (with responsive design via media queries)  
+- **JavaScript** (DOM manipulation, form validation, localStorage)
+
