@@ -71,7 +71,6 @@ body {
 .nav a {
     color: white;
     text-decoration: none;
-
 }
 
 .nav a:hover {
@@ -234,7 +233,7 @@ body {
 }
 
 .contact {
-    width: 400px;
+    width: 480px;
     border: 2px solid #fff6f6;
     box-shadow: 0 4px 12px #00000014;
     border-radius: 8px;
@@ -309,4 +308,42 @@ body {
 .explain {
     color: #908b8b;
     opacity: 0.85;
+}
+
+/* Emergency helpline section */
+#helplineNumbers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+
+}
+
+#helplineNumbers h2 {
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.buttons button {
+    padding: 13px 12px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+.buttons button:hover{
+    background-color: #0056b3;
+}
+.buttons button a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
 }

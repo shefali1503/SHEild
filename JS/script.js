@@ -27,7 +27,7 @@ function renderContactCard(contact) {
                 
                 <div class="info">  
                     <p>${contact.name}</p>
-                    <p>${contact.number}|${contact.email}</p>
+                    <p>${contact.number} | ${contact.email}</p>
                 </div>
                 <div class="btn"> 
                 <button class="call">📞</button>
