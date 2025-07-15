@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
-
+* {
+    margin: 0;
+    padding: 0;
+}
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -8,9 +11,9 @@ body {
 
 .header {
     display: flex;
+    margin-top: 18px;
     background-color: black;
     justify-content: space-between;
-    background-color: black;
     color: white;
     margin-left: 76px;
     width: 85%;
@@ -82,6 +85,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin: 40px auto;
+    line-height: 44px;
 }
 
 .logo {
@@ -133,6 +137,7 @@ body {
 #emergency-contacts h2 {
     font-size: 42px;
     font-weight: bold;
+    margin: 40px;
 }
 
 .addContact {
@@ -303,6 +308,7 @@ body {
 #location h2 {
     font-size: 42px;
     font-weight: bold;
+    margin: 40px;
 }
 
 .explain {
@@ -323,6 +329,7 @@ body {
 #helplineNumbers h2 {
     font-size: 42px;
     font-weight: bold;
+    margin: 40px;
 }
 
 .buttons {
@@ -339,11 +346,31 @@ body {
     color: white;
     cursor: pointer;
 }
-.buttons button:hover{
+
+.buttons button:hover {
     background-color: #0056b3;
 }
+
 .buttons button a {
     color: white;
     font-weight: bold;
     text-decoration: none;
+}
+
+/* footer */
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    height: 150px;
+    padding: 0;
+    background-color: black;
+    color: white;
+    line-height: 20px;
+}
+
+footer a {
+    color: white;
 }

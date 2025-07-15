@@ -33,11 +33,14 @@
         padding: 53px;
     }
 
-    #emergency-contacts h2 {
+    #emergency-contacts h2,
+    #helplineNumbers h2,
+    #location h2 {
         font-size: 30px;
+        margin: 18px auto;
     }
 
     .contact {
-    width: 331px;}
-
+        width: 354px;
+    }
 }
