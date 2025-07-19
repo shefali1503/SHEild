@@ -93,7 +93,7 @@ function initUserDetails() {
   // Helpers to show/hide card
   function showUserCard(data) {
     cardNameEl.textContent = data.name;
-    cardContactEl.textContent = `${data.phone} | ${data.email}`;
+    cardContactEl.textContent = `${data.phone}  |  ${data.email}`;
     cardEl.classList.remove("hidden");
     // Optionally hide form when card visible:
     document.querySelector(".user-details-form-wrapper").classList.add("hidden");
@@ -112,11 +112,11 @@ function getUserProfile() {
   }
 }
 
-// Emergency Button click
-function EmergencyMessage() {
-  alert("🚨 Emergency message sent");
-}
-document.querySelector(".button-container")?.addEventListener("click", EmergencyMessage);
+// // Emergency Button click
+// function EmergencyMessage() {
+//   alert("🚨 Emergency message sent");
+// }
+// document.querySelector(".button-container")?.addEventListener("click", EmergencyMessage);
 
 
 // Emergency Contacts Logic 
@@ -246,10 +246,7 @@ function deleteContact(email) {
   contacts = contacts.filter(c => c.email !== email);
   localStorage.setItem(CONTACTS_KEY, JSON.stringify(contacts));
 }
-
-// ==========================================================
 // Responsive Sidebar Nav
-// ==========================================================
 function toggleSidebar() {
   const sidebar = document.getElementById("sidebar");
   if (!sidebar) return;

@@ -162,7 +162,8 @@ body {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.user-details-actions button {
+.user-details-actions button,
+#ud-card .ud-card-buttons button {
     background-color: #007bff;
     color: white;
     padding: 10px 16px;
@@ -172,6 +173,19 @@ body {
     cursor: pointer;
 }
 
+.ud-card-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ud-card-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    gap: 12px;
+}
+
 #ud-card {
     width: 480px;
     border: 2px solid #fff6f6;
@@ -179,12 +193,16 @@ body {
     border-radius: 8px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 10px;
     padding: 12px;
     background-color: #fff;
     margin-bottom: 16px;
     font-family: Arial, sans-serif;
+}
+
+#ud-card.hidden {
+  display: none;
 }
 
 /* For Emergency contacts */
@@ -375,6 +393,7 @@ body {
 .explain {
     color: #908b8b;
     opacity: 0.85;
+    margin-bottom: 40px;
 }
 
 /* Emergency helpline section */
