@@ -31,6 +31,15 @@ Our goal is to build a safety-first tool accessible on both mobile and desktop d
 ✅ Responsive UI with mobile-friendly navigation  
 ✅ Emergency alert button  
 ✅ Quick-dial buttons for helpline numbers
+✅add emergency alert flow w/ SMS, email, clipboard + geolocation link
+Read user profile + emergencyContacts from localStorage.
+Build structured alert message (name/phone/email + optional location).
+Launch SMS composer (multi‑recipient best effort).
+Launch mailto backup w/ subject + body.
+Copy alert text to clipboard for desktop fallback.
+Added getLocationLink() w/ geolocation + Google Maps URL.
+Basic error handling + empty contact guard.
+
 
 🔜 Upcoming:
 - Live location sharing  
@@ -44,4 +53,6 @@ Our goal is to build a safety-first tool accessible on both mobile and desktop d
 - **HTML5**  
 - **CSS3** (with responsive design via media queries)  
 - **JavaScript** (DOM manipulation, form validation, localStorage)
+
+
 
