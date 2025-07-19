@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link rel="icon" type="image/png" href="./img/favicon.png"> 
+    <link rel="icon" type="image/png" href="./img/favicon.png">
     <title>SHEild - Digital Sheild</title>
 </head>
 
@@ -38,7 +38,7 @@
                 <a href="./aboutus.html">About Us</a>
             </div>
         </div>
-        
+
         <div class="home-text">
             <h1>Your digital shield in times of need.</h1>
             <h1>HAVING AN EMERGENCY ?</h1>
@@ -48,6 +48,34 @@
             <button class="emergency">
                 Click here
             </button>
+        </div>
+    </section>
+
+    <section id="user-details" class="user-details-section">
+        <h2>Your Details</h2>
+        <p class="explain">Add your own information so contacts know who is sending alerts.</p>
+        <!-- Form -->
+        <div class="user-details-form-wrapper">
+            <input type="text" id="ud-name" placeholder="Your Name" required>
+            <input type="tel" id="ud-phone" placeholder="Your Phone Number" pattern="[0-9]+" required>
+            <input type="email" id="ud-email" placeholder="Your Email" required>
+            <div class="user-details-actions">
+                <button id="ud-save" type="button">Save</button>
+                <button id="ud-clear" type="button">Clear</button>
+            </div>
+            <p id="ud-msg" class="ud-msg"></p>
+        </div>
+
+        <!-- Display Card (hidden until data saved) -->
+        <div id="ud-card" class="ud-card hidden">
+            <div class="ud-card-info">
+                <p class="ud-card-name"></p>
+                <p class="ud-card-contact"></p>
+            </div>
+            <div class="ud-card-buttons">
+                <button id="ud-edit" type="button">Edit</button>
+                <button id="ud-delete" type="button">Delete</button>
+            </div>
         </div>
     </section>
 
@@ -88,14 +116,13 @@
     </section>
 
 
-
     <script src="JS/script.js"></script>
-
 
     <footer>
         <p>&copy; 2025 SHEild. All rights reserved.</p>
         <p>
             <a href="./aboutus.html">About Us</a> |
+            <a href="#user-details">Your Details</a> |
             <a href="#emergency-contacts">Emergency Contacts</a> |
             <a href="#helplineNumbers">Helplines</a>
         </p>
