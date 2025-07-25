@@ -255,3 +255,229 @@ function toggleSidebar() {
 
 document.querySelector(".hamburger")?.addEventListener("click", toggleSidebar);
 document.querySelector(".close-btn")?.addEventListener("click", toggleSidebar);
+
+
+//Emergency Button Logic
+// --- Emergency Alert Flow ---
+async function handleEmergencyClick() {
+  const user = JSON.parse(localStorage.getItem("userDetails") || "{}");//gives us the details who is using the website from the local storage
+  const contacts = JSON.parse(localStorage.getItem("emergencyContacts") || "[]");//gives array that contains the info of the emergency contacts
+
+  if (!contacts.length) {//if emergency contacts array is empty then we will alert that no emergency contacts are saved and exit
+    alert("No emergency contacts saved!");
+    return;
+  }
+
+  // Try to grab location of the user as we have to send it also (optional, permission required)
+  const locText = await getLocationLink();
+
+  // Build message that is to be sent
+  //message created will be as follows
+  /*
+  🚨 EMERGENCY ALERT 🚨
+  From:abc
+  Phone:9958741250
+  Email: abc1234@gmail.com
+  location_link
+  Please contact me immediately.
+  */
+  alert("Emergency message Sent 🚨")
+  const msg =
+    `🚨 EMERGENCY ALERT 🚨\n` +
+    `From: ${user.name || "Unknown"}\n` +
+    `Phone: ${user.phone || "N/A"}\n` +
+    `Email: ${user.email || "N/A"}\n` +
+    (locText ? `Location: ${locText}\n` : "") +
+    `Please contact me immediately.`;
+
+  // Launch SMS (mobile devices) — best effort
+  launchSmsToContacts(contacts, msg);
+
+  // Also open email composer as backup
+  launchEmailToContacts(contacts, msg);
+
+  // Copy to clipboard as fallback for desktop
+  copyEmergencyMsg(msg);
+}
+
+//clicking the emergency button logic 
+document.querySelector(".button-container .emergency").addEventListener("click", handleEmergencyClick);
+
+// Try geolocation and return a Google Maps link string or "" --this is for live location
+async function getLocationLink() {
+  return new Promise((resolve) => {
+    if (!navigator.geolocation) {
+      resolve("");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        const mapsLink = `https://maps.google.com/?q=${lat},${lon}`;
+        let address = "";
+
+        try {
+          const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`, {
+            headers: {
+              "User-Agent": "YourAppName/1.0 (your.email@example.com)"
+            }
+          });
+          const data = await response.json();
+          address = data.display_name || "";
+        } catch (error) {
+          console.error("Geocoding error:", error);
+        }
+
+        const finalText = address ? `${address}\n📍 ${mapsLink}` : mapsLink;
+        resolve(finalText);
+      },
+      (error) => {
+        console.error("Location error:", error);
+        resolve("");
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  });
+}
+
+
+// Normalize number -> digits only, optionally prepend country code (add your logic)
+function normalizeNumber(num) {
+  return num.replace(/\D/g, "");
+}
+
+/**
+ * Open SMS composer. Multi-recipient support varies by platform.
+ * Strategy:
+ *  - Use first number as primary.
+ *  - Include additional numbers separated by comma; some devices use ';' (iOS older).
+ *  - Use body param fallback for cross-platform.
+ */
+function launchSmsToContacts(contacts, message) {
+  const numbers = contacts.map((c) => normalizeNumber(c.number)).filter(Boolean);
+
+  if (!numbers.length) return;
+
+  // Primary num
+  const primary = numbers[0];
+
+  // Some platforms allow comma-separated additional recipients
+  const rest = numbers.slice(1).join(",");
+
+  const recipients = rest ? `${primary},${rest}` : primary;
+
+  // Android prefers ?body= ; iOS historically &body= (but most handle ?& now)
+  const smsHref = `sms:${recipients}?&body=${encodeURIComponent(message)}`;
+
+  // Navigate (will open SMS app or fail silently on desktops)
+  window.location.href = smsHref;
+}
+
+/**
+ * Open email compose window with all contacts.
+ * Depending on preference, you may want to use BCC instead of TO.
+ */
+function launchEmailToContacts(contacts, message) {
+  const user = JSON.parse(localStorage.getItem("userDetails") || "{}");
+
+  const emails = contacts.map((c) => c.email).filter(Boolean).join(",");
+  if (!emails) return;
+
+  const subject = `EMERGENCY ALERT from ${user.name || "SHEild User"}`;
+  const body = message;
+
+  const mailHref = `mailto:${encodeURIComponent(
+    emails
+  )}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  // Open in new tab/window so it doesn't interrupt SMS handoff
+  setTimeout(() => {
+    window.open(mailHref, "_blank");
+  }, 600);
+}
+
+//  Copy message text as a desktop fallback.
+
+function copyEmergencyMsg(text) {
+  if (!navigator.clipboard) return;
+  navigator.clipboard.writeText(text).catch(() => { });
+}
+console.log("Emergency click:", {
+  user: JSON.parse(localStorage.getItem("userDetails") || "{}"),
+  contacts: JSON.parse(localStorage.getItem("emergencyContacts") || "[]")
+});
+
+
+
+//Live Location feature
+let map;
+let marker;
+
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.querySelector(".share-btn");
+  const statusMsg = document.getElementById("statusMessage");
+  const addressMsg = document.getElementById("address");
+
+  button.addEventListener("click", () => {
+    if (!navigator.geolocation) {
+      statusMsg.textContent = "Geolocation is not supported by your browser.";
+      return;
+    }
+
+    statusMsg.textContent = "Locating...";
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        statusMsg.textContent = `Location found: ${lat.toFixed(5)}, ${lon.toFixed(5)}`;
+
+        // Reverse geocode to get address
+        try {
+          const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);
+          const data = await response.json();
+          const address = data.display_name || "Address not found";
+
+          // Display address
+          addressMsg.textContent = `📍 ${address}`;
+
+          // Initialize or update map
+          if (!map) {
+            map = L.map("map").setView([lat, lon], 15);
+            L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+              attribution: '&copy; OpenStreetMap &copy; CartoDB contributors',
+            }).addTo(map);
+
+            // Important: ensure tiles render properly
+            setTimeout(() => {
+              map.invalidateSize();
+            }, 100);
+          } else {
+            map.setView([lat, lon], 15);
+            map.invalidateSize(); // Fix overlapping tiles
+          }
+
+          // Add or update marker
+          if (marker) {
+            marker.setLatLng([lat, lon]).setPopupContent(address).openPopup();
+          } else {
+            marker = L.marker([lat, lon])
+              .addTo(map)
+              .bindPopup(address)
+              .openPopup();
+          }
+        } catch (error) {
+          addressMsg.textContent = "Failed to retrieve address.";
+          console.error("Geocoding error:", error);
+        }
+      },
+      (error) => {
+        statusMsg.textContent = "Unable to retrieve your location.";
+        console.error("Location error:", error);
+      }
+    );
+  });
+});

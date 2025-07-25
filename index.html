@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="icon" type="image/png" href="./img/favicon.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <title>SHEild - Digital Sheild</title>
 </head>
 
@@ -46,25 +48,6 @@
             </button>
         </div>
     </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <section id="user-details" class="user-details-section">
         <h2>Your Details</h2>
         <p class="explain">Add your own information so contacts know who is sending alerts.</p>
@@ -109,12 +92,16 @@
         </div>
     </section>
 
-
-
     <!--Location-->
     <section id="location">
-        <h2>Live Location</h2>
-        <p class="explain">Share your live location to your contacts</p>
+        <div class="location-container">
+            <h2>Share Your Location</h2>
+            <p class="explain">Click on Share My Location button to track your location.</p>
+            <div id="map"></div>
+            <button class="share-btn">📍 Share My Location</button>
+            <p id="statusMessage" class="status-msg">Waiting to share...</p>
+            <p id="address" class="address-msg"></p>
+        </div>
 
     </section>
 
@@ -129,7 +116,7 @@
         </div>
     </section>
 
-
+   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="JS/script.js"></script>
     <script src="./JS/emergencybutton.js"></script>
 
