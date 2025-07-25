@@ -35,7 +35,8 @@
 
     #emergency-contacts h2,
     #helplineNumbers h2,
-    #location h2 {
+    #location h2,
+    #user-details h2 {
         font-size: 30px;
         margin: 18px auto;
     }
@@ -43,4 +44,27 @@
     .contact {
         width: 354px;
     }
+
+    #ud-card {
+        width: 364px;
+    }
+
+    .user-details-actions button,
+    #ud-card .ud-card-buttons button {
+        background-color: #007bff;
+        color: white;
+        padding: 8px 13px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .ud-card-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+
 }
