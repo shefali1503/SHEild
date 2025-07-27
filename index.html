@@ -21,20 +21,20 @@
             <div class="hamburger">☰</div>
             <ul class="nav">
                 <li><a href="#">Home</a></li>
+                <a href="#user-details">Your Details</a>
                 <li><a href="#emergency-contacts">Emergency Contacts</a></li>
                 <li><a href="#location">Location</a></li>
                 <li><a href="#helplineNumbers">Helpline</a></li>
-                <a href="#user-details">Your Details</a>
             </ul>
 
             <!-- Mobile Sidebar Nav for responsiveness -->
             <div id="sidebar" class="sidebar">
                 <a href="#" class="close-btn">×</a>
                 <a href="#">Home</a>
+                <a href="#user-details">Your Details</a>
                 <a href="#emergency-contacts">Emergency Contacts</a>
                 <a href="#location">Location</a>
                 <a href="#helplineNumbers">Helpline</a>
-                <a href="#user-details">Your Details</a>
             </div>
         </div>
         <div class="home-text">
@@ -108,15 +108,27 @@
     <!--Emergency Numbers for all the cities-->
     <section id="helplineNumbers">
         <h2>Emergency Helpline Numbers</h2>
-        <div class="buttons">
-            <button class="police"><a href="tel:100">👮‍♂️ Police</a></button>
-            <button class="womenHelpline"><a href="tel:1091">👩‍⚕️ Women Helpline</a></button>
-            <button class="mentalHealth"><a href="tel:9152987821">🎗 Mental Health Support</a></button>
-            <button class="ambulane"><a href="tel:102">🚨 Ambulance</a></button>
+        <div class="helpline-container">
+            <div class="helpline-div">
+                <img src="./img/police.jpg" alt="police">
+                <button class="police"><a href="tel:100">👮‍♂️ Police</a></button>
+            </div>
+            <div class="helpline-div">
+                <img src="./img/police.jpg" alt="police">
+                <button class="womenHelpline"><a href="tel:1091">👩‍⚕️ Women Helpline</a></button>
+            </div>
+            <div class="helpline-div">
+                <img src="./img/police.jpg" alt="police">
+                <button class="mentalHealth"><a href="tel:9152987821">🎗 Mental Health Support</a></button>
+            </div>
+            <div class="helpline-div">
+                <img src="./img/police.jpg" alt="police">
+                <button class="ambulane"><a href="tel:102">🚨 Ambulance</a></button>
+            </div> 
         </div>
     </section>
 
-   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="JS/script.js"></script>
     <script src="./JS/emergencybutton.js"></script>
 

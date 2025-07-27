@@ -17,6 +17,7 @@ body {
     color: white;
     margin-left: 76px;
     width: 85%;
+    height: 50px;
     align-items: center;
 }
 
@@ -59,8 +60,8 @@ body {
 }
 
 .logo img {
-    width: 36px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
 }
 
@@ -78,6 +79,8 @@ body {
 
 .nav a:hover {
     text-decoration: underline;
+    background-color: rgba(176, 162, 162, 0.2);
+    border-radius: 4px;
 }
 
 .home-text {
@@ -96,12 +99,14 @@ body {
     /* Better spacing */
     margin-left: 10px;
     font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
 
 }
 
 .emergency {
     padding: 60px;
-    background: red;
+    background: #ff6161;
     border-radius: 50%;
     border: none;
     font-size: large;
@@ -202,7 +207,7 @@ body {
 }
 
 #ud-card.hidden {
-  display: none;
+    display: none;
 }
 
 /* For Emergency contacts */
@@ -386,19 +391,21 @@ body {
 }
 
 .location-container {
-  text-align: center;
-  padding: 30px 20px;
+    text-align: center;
+    padding: 30px 20px;
 }
 
 #map {
-  width: 100%;
-  min-height: 300px;
-  max-width: 600px;
-  margin: 0 auto 20px;
-  border-radius: 12px;
-  background: #eee;
-  border: 1px solid #ccc;
+    width: 100%;
+    min-height: 300px;
+    max-width: 600px;
+    margin: 0 auto 20px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa;
 }
+
 .share-btn {
     background-color: #007bff;
     color: white;
@@ -409,20 +416,20 @@ body {
     font-size: 14px;
 }
 
-.share-btn:hover{
+.share-btn:hover {
     background-color: #0056b3;
 }
 
 .status-msg {
-  margin-top: 15px;
-  font-style: italic;
-  color: #555;
+    margin-top: 15px;
+    font-style: italic;
+    color: #555;
 }
 
 .address-msg {
-  color: #333;
-  font-weight: 500;
-  margin-top: 10px;
+    color: #333;
+    font-weight: 500;
+    margin-top: 10px;
 }
 
 #location h2 {
@@ -453,13 +460,30 @@ body {
     margin: 40px;
 }
 
-.buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+.helpline-div {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-radius: 12px;
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa;
 }
 
-.buttons button {
+.helpline-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+
+.helpline-div button a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.helpline-div button {
     padding: 13px 12px;
     border-radius: 5px;
     border: none;
@@ -494,4 +518,15 @@ footer {
 
 footer a {
     color: white;
+}
+
+.contact,
+#ud-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact:hover,
+#ud-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }

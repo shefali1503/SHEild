@@ -260,7 +260,7 @@ document.querySelector(".close-btn")?.addEventListener("click", toggleSidebar);
 //Emergency Button Logic
 // --- Emergency Alert Flow ---
 async function handleEmergencyClick() {
-  const user = JSON.parse(localStorage.getItem("userDetails") || "{}");//gives us the details who is using the website from the local storage
+  const user = JSON.parse(localStorage.getItem("userProfile") || "{}");//gives us the details who is using the website from the local storage
   const contacts = JSON.parse(localStorage.getItem("emergencyContacts") || "[]");//gives array that contains the info of the emergency contacts
 
   if (!contacts.length) {//if emergency contacts array is empty then we will alert that no emergency contacts are saved and exit
@@ -380,7 +380,7 @@ function launchSmsToContacts(contacts, message) {
  * Depending on preference, you may want to use BCC instead of TO.
  */
 function launchEmailToContacts(contacts, message) {
-  const user = JSON.parse(localStorage.getItem("userDetails") || "{}");
+  const user = JSON.parse(localStorage.getItem("userProfile") || "{}");
 
   const emails = contacts.map((c) => c.email).filter(Boolean).join(",");
   if (!emails) return;
@@ -405,7 +405,7 @@ function copyEmergencyMsg(text) {
   navigator.clipboard.writeText(text).catch(() => { });
 }
 console.log("Emergency click:", {
-  user: JSON.parse(localStorage.getItem("userDetails") || "{}"),
+  user: JSON.parse(localStorage.getItem("userProfile") || "{}"),
   contacts: JSON.parse(localStorage.getItem("emergencyContacts") || "[]")
 });
 
@@ -419,6 +419,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const button = document.querySelector(".share-btn");
   const statusMsg = document.getElementById("statusMessage");
   const addressMsg = document.getElementById("address");
+
+  // 1. Initialize with default location (e.g., India Gate, New Delhi)
+  const defaultLat = 28.6129;
+  const defaultLon = 77.2295;
+  const defaultZoom = 13;
+
+  map = L.map("map").setView([defaultLat, defaultLon], defaultZoom);
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+    attribution: '&copy; OpenStreetMap &copy; CartoDB contributors',
+  }).addTo(map);
+
+  marker = L.marker([defaultLat, defaultLon])
+    .addTo(map)
+    .bindPopup("📍 Sample Location: India Gate")
+    .openPopup();
 
   button.addEventListener("click", () => {
     if (!navigator.geolocation) {
