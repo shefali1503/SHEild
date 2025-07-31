@@ -496,3 +496,18 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
 });
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const helplineLinks = document.querySelectorAll(".helpline-div a");
+
+        helplineLinks.forEach(link => {
+            link.addEventListener("click", function (event) {
+                const serviceName = link.textContent.trim();
+                const phoneNumber = link.getAttribute("href").replace("tel:", "");
+                alert(`You are about to call ${serviceName}\nPhone: ${phoneNumber}`);
+            });
+        });
+    });
+
