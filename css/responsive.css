@@ -66,5 +66,41 @@
         gap: 4px;
     }
 
+    footer {
+        font-size: 13px;
+        padding: 30px 15px;
+    }
+
+    footer a {
+        display: inline-block;
+        margin: 5px 3px;
+    }
+
+    .contact-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+    }
+
+    .contact {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .emergency {
+        padding: 20px 40px;
+        font-size: 18px;
+        width: 90%;
+        max-width: 300px;
+    }
+
+    #map {
+        height: 300px;
+        width: 100%;
+        max-width: 100%;
+        margin: 10px 0;
+    }
+
 
 }

@@ -502,24 +502,6 @@ body {
     text-decoration: none;
 }
 
-/* footer */
-footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px;
-    height: 150px;
-    padding: 0;
-    background-color: black;
-    color: white;
-    line-height: 20px;
-}
-
-footer a {
-    color: white;
-}
-
 .contact,
 #ud-card {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -529,4 +511,48 @@ footer a {
 #ud-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+#helplineNumbers {
+    margin-bottom: 50px; /* Adjust as needed */
+}
+
+footer {
+    background-color: #1a1a1a;
+    color: #f1f1f1;
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+footer p {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+footer a {
+    color: #f1f1f1;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ff4b5c; /* A subtle red/pink hover for emphasis */
+    text-decoration: underline;
+}
+
+footer .footer-contact {
+    margin-top: 20px;
+}
+
+footer .footer-contact h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+footer .footer-contact p {
+    margin: 5px 0;
 }
