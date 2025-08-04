@@ -88,13 +88,6 @@
         max-width: 350px;
     }
 
-    .emergency {
-        padding: 20px 40px;
-        font-size: 18px;
-        width: 90%;
-        max-width: 300px;
-    }
-
     #map {
         height: 300px;
         width: 100%;
