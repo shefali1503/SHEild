@@ -38,7 +38,7 @@
     #location h2,
     #user-details h2 {
         font-size: 30px;
-        margin: 18px auto;
+        margin: 18px 12px;
     }
 
     .contact {
@@ -95,5 +95,10 @@
         margin: 10px 0;
     }
 
+    .helpline-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
 
 }

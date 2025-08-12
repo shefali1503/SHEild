@@ -55,4 +55,4 @@ Basic error handling + empty contact guard.
 - **JavaScript** (DOM manipulation, form validation, localStorage)
 
 
-
+Submitted this project>right now other features are on pause
